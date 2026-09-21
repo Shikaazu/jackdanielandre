@@ -50,6 +50,36 @@
 				offset: $header.outerHeight()
 			});
 
+	// Photo modal.
+		var $photoModal = $('#photo-modal'),
+			$photoModalClose = $photoModal.find('.photo-modal__close'),
+			$photoModalTrigger;
+
+		$('[data-photo-modal]').on('click', function() {
+			$photoModalTrigger = $(this);
+			$photoModal.removeAttr('hidden').addClass('is-visible');
+			$photoModalClose.trigger('focus');
+		});
+
+		function closePhotoModal() {
+			$photoModal.removeClass('is-visible').attr('hidden', true);
+
+			if ($photoModalTrigger)
+				$photoModalTrigger.trigger('focus');
+		}
+
+		$photoModalClose.on('click', closePhotoModal);
+
+		$photoModal.on('click', function(event) {
+			if (event.target === this)
+				closePhotoModal();
+		});
+
+		$window.on('keydown', function(event) {
+			if (event.key === 'Escape' && $photoModal.hasClass('is-visible'))
+				closePhotoModal();
+		});
+
 	// Menu.
 		$('#menu')
 			.append('<a href="#menu" class="close"></a>')
