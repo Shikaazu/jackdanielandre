@@ -811,6 +811,13 @@
 		&.major {
 			padding: 1em 0;
 
+			.bunny-mark {
+				display: inline-block;
+				font-size: 3em;
+				line-height: 1;
+				padding: 0.35em;
+			}
+
 			li {
 				padding-right: 3.5em;
 
@@ -1078,6 +1085,28 @@
 			width: 60%;
 		}
 
+		&.profile-spotlight {
+			@include vendor('display', 'block');
+
+			.profile-heading {
+				@include vendor('align-items', 'center');
+				@include vendor('display', 'flex');
+
+				.image {
+					width: 40%;
+				}
+
+				.content {
+					width: 60%;
+				}
+			}
+
+			.profile-copy {
+				@include padding(0, 4em, 2em, 4em);
+				text-align: center;
+			}
+		}
+
 		&:nth-child(2n) {
 			@include vendor('flex-direction', 'row-reverse');
 		}
@@ -1098,6 +1127,18 @@
 			.content {
 				width: 55%;
 			}
+
+			&.profile-spotlight {
+				.profile-heading {
+					.image {
+						width: 45%;
+					}
+
+					.content {
+						width: 55%;
+					}
+				}
+			}
 		}
 
 		@include breakpoint('<=medium') {
@@ -1116,6 +1157,21 @@
 				max-width: none;
 				text-align: center;
 				width: 100%;
+			}
+
+			&.profile-spotlight {
+				.profile-heading {
+					display: block;
+
+					.image,
+					.content {
+						width: 100%;
+					}
+				}
+
+				.profile-copy {
+					@include padding(0, 3em, 2em, 3em);
+				}
 			}
 		}
 
